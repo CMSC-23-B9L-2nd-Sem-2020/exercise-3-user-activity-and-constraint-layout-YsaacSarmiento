@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LightsOn</string>
+    <string name="name">Name</string>
+    <string name="viewname">TextView</string>
+    <string name="done">DONE</string>
+    <string name="retry">RETRY</string>
+</resources>
