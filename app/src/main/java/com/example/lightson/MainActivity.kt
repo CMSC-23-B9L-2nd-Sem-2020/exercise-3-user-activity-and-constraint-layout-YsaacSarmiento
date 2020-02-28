@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import org.w3c.dom.Text
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         arrayOf(1,1,1,1,1),
         arrayOf(1,1,1,1,1)
     )
-
+    var count = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         done.visibility = View.VISIBLE
     }
     private fun retry(view: View){
+        var counter = findViewById<TextView>(R.id.counting)
         val a1 = findViewById<TextView>(R.id.a1)
         val a2 = findViewById<TextView>(R.id.a2)
         val a3 = findViewById<TextView>(R.id.a3)
@@ -97,6 +98,7 @@ class MainActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.game_over).visibility = View.GONE
             }
         }
+        counter.text = "0"
         a1.setBackgroundColor(Color.YELLOW)
         a2.setBackgroundColor(Color.YELLOW)
         a3.setBackgroundColor(Color.YELLOW)
@@ -175,7 +177,7 @@ class MainActivity : AppCompatActivity() {
     private fun lightsOut(view: View){
         var isBreak = false
         var isGameOver = true
-
+        var counter = findViewById<TextView>(R.id.counting)
         var i = 0
         var j = 0
         val a1 = findViewById<TextView>(R.id.a1)
@@ -278,6 +280,8 @@ class MainActivity : AppCompatActivity() {
             }
         } catch (e: Exception) {
         }
+        count+=1
+        counter.text = count.toString()
         //game over
         for(item in matrix){
             for(k in item){
@@ -290,7 +294,6 @@ class MainActivity : AppCompatActivity() {
                 break
             }
         }
-
         if(isGameOver == true){
             for(item in clickableView){
                 for(k in item){
